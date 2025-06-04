@@ -2,7 +2,9 @@
 import express from 'express';
 import mongoose from 'mongoose';
 import cors from 'cors';
+import uploadRoute from './routes/upload.js'
 import dotenv from 'dotenv';
+import {v2 as cloudinary} from 'cloudinary'
 
 dotenv.config();
 
@@ -34,3 +36,12 @@ mongoose.connect(MONGO_URI, {
 .catch(err => {
   console.error('MongoDB connection failed:', err.message);
 });
+
+cloudinary.config({
+  cloud_name: process.env.CLOUDINARY_NAME,
+  api_key: process.env.CLOUDINARY_KEY,
+  api_secret: process.env.CLOUDINARY_SECRET
+});
+
+
+app.use('/api/upload', uploadRoute)
