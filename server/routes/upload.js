@@ -16,7 +16,6 @@ const storage = new CloudinaryStorage({
     folder:'music',
     resource_type:'video',
     format:async(req,file)=>'mp3'
-
   }
 })
 
