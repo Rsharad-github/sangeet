@@ -1,4 +1,5 @@
 // index.js
+import songRoutes from './routes/songs.js';
 import express from 'express';
 import mongoose from 'mongoose';
 import cors from 'cors';
@@ -42,3 +43,5 @@ cloudinary.config({
 
 
 app.use('/api/upload', uploadRoute)
+
+app.use('/api/songs', songRoutes);
